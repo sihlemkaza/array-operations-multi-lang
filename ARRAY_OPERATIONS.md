@@ -193,8 +193,19 @@ const result = originalArray.reduce(
 ---
 
 ### Java
-[🚧 To Be Added]
 
+## for Loop
+
+```Java
+int[] originalArray = {1, 2, 3, 4};
+int[] newArray = new int[originalArray.length];
+
+for (int i = 0; i < originalArray.length; i++) {
+    newArray[i] = originalArray[i] * 2;
+}
+
+// newArray: [2, 4, 6, 8]
+```
 ---
 
 ### Python
