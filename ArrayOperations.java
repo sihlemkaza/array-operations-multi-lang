@@ -72,7 +72,6 @@ public class ArrayOperations {
             printResult("for-each", originalArray, newArray);
         }
 
-        // map
         {
             int[] originalArray = {1, 2, 3, 4};
             int[] newArray = Arrays.stream(originalArray)
