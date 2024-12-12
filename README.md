@@ -46,6 +46,9 @@ for (let i = 0; i < originalArray.length; i++) {
 ```
 
 **Java**
+
+[docs/javase/for 🔗](https://docs.oracle.com/en/java/javase/20/docs/api/jdk.compiler/com/sun/source/tree/ForLoopTree.html)
+
 ```Java
 int[] originalArray = {1, 2, 3};
 int[] newArray = new int[originalArray.length];
@@ -78,7 +81,8 @@ for (const value of originalArray) {
 
 **Java**
 
-Enhanced for loop
+[docs/javase/enhanced-for-loop 🔗](https://docs.oracle.com/javase/specs/jls/se23/html/jls-14.html#jls-14.14.2)
+
 ```Java
 int[] originalArray = {1, 2, 3};
 List<Integer> newArray = new ArrayList<>();
@@ -97,7 +101,7 @@ Examples below iterates over an array of numbers and returns a new array with ea
 
 **JavaScript**
 
-[docs/Reference/Statements/while🔗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while)
+[docs/Reference/Statements/while 🔗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while)
 
 ```JavaScript
 const originalArray = [1, 2, 3];
@@ -112,6 +116,8 @@ while (i < originalArray.length) {
 ```
 
 **Java**
+
+[docs/javase/while 🔗](https://docs.oracle.com/en/java/javase/20/docs/api/jdk.compiler/com/sun/source/tree/WhileLoopTree.html)
 
 ```Java
 int[] originalArray = {1, 2, 3};
@@ -148,6 +154,9 @@ do {
 ```
 
 **Java**
+
+[docs/javase/do-while 🔗](https://docs.oracle.com/en/java/javase/20/docs/api/jdk.compiler/com/sun/source/tree/DoWhileLoopTree.html)
+
 ```Java
 int[] originalArray = {1, 2, 3};
 List<Integer> newArray = new ArrayList<>();
@@ -197,6 +206,8 @@ const result = originalArray.map((value) => value * 2);
 
 **Java**
 
+[docs/javase/map 🔗](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function))
+
 ```Java
 int[] originalArray = {1, 2, 3, 4};
 int[] newArray = Arrays.stream(originalArray)
@@ -231,6 +242,9 @@ const result = originalArray.filter((value) => value > 0);
 ```
 
 **Java**
+
+[docs/javase/filter 🔗](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate))
+
 ```Java
 int[] originalArray = {1, -2, 3, 4, -5};
 int[] result = Arrays.stream(originalArray)
@@ -259,6 +273,9 @@ const result2 = originalArray.every((value) => value > 100);
 ```
 
 **Java**
+
+[docs/javase/allMatch 🔗](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate))
+
 ```Java
 int[] originalArray = {2, 4, 6};
 boolean result1 = Arrays.stream(originalArray)
@@ -292,6 +309,8 @@ const result2 = originalArray.some((value) => value > 100);
 
 **Java**
 
+[docs/javase/anyMatch 🔗](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate))
+
 ```Java
 int[] originalArray = {1, 3, 5, 6};
 boolean result1 = Arrays.stream(originalArray)
@@ -322,6 +341,8 @@ const result = originalArray.find((value) => value > 0 && value % 2 === 0);
 
 **Java**
 
+[docs/javase/findFirst 🔗](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/stream/Stream.html#findFirst())
+
 ```Java
 int[] originalArray = {-1, 3, 6, 7, 8};
 OptionalInt result = Arrays.stream(originalArray)
@@ -351,6 +372,8 @@ const result = originalArray.reduce(
 ```
 
 **Java**
+
+[docs/javase/reduce 🔗](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/stream/Stream.html#reduce(T,java.util.function.BinaryOperator))
 
 ```Java
 int[] originalArray = {1, 2, 3, 4};
