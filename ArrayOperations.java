@@ -60,7 +60,7 @@ public class ArrayOperations {
                 newArray.add(originalArray[i] * 2);
                 i++;
             } while (i < originalArray.length);
-            printResult("for", originalArray, newArray);
+            printResult("do...while", originalArray, newArray);
         }
 
         {
@@ -69,7 +69,7 @@ public class ArrayOperations {
                 .map(value -> value * 2)
                 .boxed()
                 .collect(Collectors.toList());
-            printResult("for-each", originalArray, newArray);
+            printResult("map to List", originalArray, newArray);
         }
 
         {
@@ -77,7 +77,7 @@ public class ArrayOperations {
             int[] newArray = Arrays.stream(originalArray)
                 .map(value -> value * 2)
                 .toArray();
-            printResult("map", originalArray, newArray);
+            printResult("map to Array", originalArray, newArray);
         }
 
         {
