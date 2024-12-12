@@ -326,7 +326,7 @@ boolean result2 = Arrays.stream(originalArray)
 
  Returns the first element in an array that satisfies a specified condition. If no element satisfies the condition, it returns a default or `null`/`undefined` equivalent.
 
- Examples below demonstrate locate the first number greater than 0 and divisible by 2.
+ Examples below demonstrate locating the first number greater than 0 and is even.
 
 **JavaScript**
 
