@@ -14,14 +14,15 @@ Covering different techniques for iterating, transforming, and manipulating arra
 
 # Constructs/Statements and Methods Covered
 - [for](#for)
-- [for...of / Enahanced for Loop](#forof--enahanced-for-loop)
+- [for...of | Enahanced for Loop | for...in](#forof--enahanced-for-loop--forin)
 - [while](#while)
 - [do...while](#dowhile)
+- [Infinite Loop](#infite-loop)
 - [forEach](#dowhile)
 - [map](#map)
 - [filter](#filter)
-- [every](#every--all-match)
-- [some](#some--any-match)
+- [every | all match](#every--all-match)
+- [some | any match](#some--any-match)
 - [find](#find)
 - [reduce](#reduce)
 
@@ -61,8 +62,19 @@ System.out.println("newArray: " + Arrays.toString(newArray));
 // newArray: [2, 4, 6]
 ```
 
+**Rust**
+```Rust
+let original_array = vec![1, 2, 3];
+let mut new_array = Vec::new();
+for i in 0..original_array.len() {
+    new_array.push(original_array[i] * 2);
+}
 
-## for...of / Enahanced for Loop
+println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
+```
+
+
+## for...of | Enahanced for Loop | for...in
 A construct used to iterate over iterable objects like arrays, strings, or collections.
 
 Examples below iterates over an array of numbers and returns a new array with each element doubled.
@@ -92,6 +104,17 @@ for (int value : originalArray) {
 }
 
 System.out.println("newArray: " + newArray); // newArray: [2, 4, 6]
+```
+
+**Rust**
+```Rust
+let original_array = vec![1, 2, 3];
+let mut new_array = Vec::new();
+for &value in &original_array {
+    new_array.push(value * 2);
+}
+
+println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
 ```
 
 ## while
@@ -132,6 +155,19 @@ while (i < originalArray.length) {
 System.out.println("newArray: " + newArray); // newArray: [2, 4, 6]
 ```
 
+**Rust**
+```Rust
+let original_array = vec![1, 2, 3];
+let mut new_array = Vec::new();
+let mut i = 0;
+while i < original_array.len() {
+    new_array.push(original_array[i] * 2);
+    i += 1;
+}
+
+println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
+```
+
 ## do...while
 
 Similar to a `while` loop, but it guarantees that the loop body executes at least once because the condition is evaluated after the loop body.
@@ -170,6 +206,30 @@ do {
 System.out.println("newArray: " + newArray); // newArray: [2, 4, 6]
 ```
 
+## Infinite Loop
+
+The `loop` in Rust is used to create an infinite loop. It will keep executing until explicitly stopped
+with a break or an external condition (like a system signal). You can also break with a return value
+that can be assigned to a variable e.g. `let result = loop { inner_logic... break 5; }`.
+
+Examples below iterates over an array of numbers and returns a new array with each element doubled.
+
+**Rust**
+```Rust
+let original_array = vec![1, 2, 3];
+let mut new_array = Vec::new();
+let mut i = 0;
+loop {
+    new_array.push(original_array[i] * 2);
+    i += 1;
+    if i >= original_array.len() {
+        break;
+    }
+}
+
+println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
+```
+
 ## forEach
 
 An array method that iterates over each element in a collection or array and applies a provided function or operation to each element. 
@@ -187,7 +247,18 @@ originalArray.forEach((value) => {
   newArray.push(value * 2);
 });
 
-console.log('newArray: ', newArray); // newArray: [2, 4, 6, 8]
+console.log('newArray: ', newArray); // new_array: [2, 4, 6, 8]
+```
+
+**Rust**
+```Rust
+let original_array = vec![1, 2, 3, 4];
+let mut new_array = Vec::new();
+original_array.iter().for_each(|&value| {
+    new_array.push(value * 2);
+});
+
+println!("new_array: {:?}", new_array); // new_array: [2, 4, 6, 8]
 ```
 
 ## map
@@ -232,6 +303,15 @@ System.out.println("result (List): " + newArray);
 // result (List): [2, 4, 6, 8]
 ```
 
+**Rust**
+```Rust
+let original_array = vec![1, 2, 3, 4];
+let new_array: Vec<_> = original_array.iter()
+    .map(|&value| value * 2).collect();
+
+println!("new_array: {:?}", new_array); // new_array: [2, 4, 6, 8]
+```
+
 ## filter
 
 Creates a new array containing only elements that satisfy a given condition or predicate function.
@@ -263,7 +343,16 @@ System.out.println("result: " + Arrays.toString(result));
 // result: [1, 3, 4]
 ```
 
-## every / all match
+**Rust**
+```Rust
+let original_array = vec![1, -2, 3, 4, -5];
+let result: Vec<_> = original_array.iter()
+    .filter(|&&value| value > 0).cloned().collect();
+
+println!("result: {:?}", result); // new_array: [1, 3, 4]
+```
+
+## every | all match
 
 Checks if all elements in an array satisfy a given condition, returning a boolean value.
 
@@ -297,7 +386,17 @@ System.out.println("result1: " + result1 + ", result2: " + result2);
 // result1: true, result2: false
 ```
 
-## some / any match
+**Rust**
+```Rust
+let original_array = vec![2, 4, 6];
+let result1 = original_array.iter().all(|&value| value % 2 == 0);
+let result2 = original_array.iter().all(|&value| value > 100);
+
+println!("result1: {:?}, result2: {:?}", result1, result2); 
+// result1: true, result2: false
+```
+
+## some | any match
 
 Checks if at least one element in an array satisfies a given condition, returning a boolean value.
 
@@ -331,6 +430,16 @@ System.out.println("result1: " + result1 + ", result2: " + result2);
 // result1: true, result2: false
 ```
 
+**Rust**
+```Rust
+let original_array = vec![1, 3, 5, 6];
+let result1 = original_array.iter().any(|&value| value % 2 == 0);
+let result2 = original_array.iter().any(|&value| value > 100);
+
+println!("result1: {:?}, result2: {:?}", result1, result2); 
+// result1: true, result2: false
+```
+
 # find
 
  Returns the first element in an array that satisfies a specified condition. If no element satisfies the condition, it returns a default or `null`/`undefined` equivalent.
@@ -359,6 +468,15 @@ OptionalInt result = Arrays.stream(originalArray)
     .findFirst();
 
 System.out.println("result: " + result.getAsInt()); // result: 6
+```
+
+**Rust**
+```Rust
+let original_array = vec![-1, 3, 6, 7, 8];
+let result = original_array.iter()
+    .find(|&&value| value > 0 && value % 2 == 0);
+
+println!("result: {:?}", result); // result: Some(6)
 ```
 
 ## reduce
@@ -392,6 +510,14 @@ int result = Arrays.stream(originalArray)
 System.out.println("result: " + result); // result: 10
 ```
 
+**Rust**
+```Rust
+let original_array = vec![1, 2, 3, 4];
+let result: i32 = original_array.iter().sum();
+
+println!("result: {:?}", result); // result: 10
+```
+
 ### Reduce Example 2: Find the maximum value in an array
 
 **JavaScript**
@@ -412,6 +538,14 @@ int result = Arrays.stream(originalArray)
     .reduce(Integer.MIN_VALUE, Integer::max);
 
 System.out.println("result: " + result); // result: 9
+```
+
+**Rust**
+```Rust
+let original_array = vec![3, 7, 2, 9, 5];
+let result = original_array.iter().cloned().fold(i32::MIN, i32::max);
+
+println!("result: {:?}", result); // result: 9
 ```
 
 ### Reduce Example 3: Flatten a nested array
@@ -435,4 +569,12 @@ int[] result = Arrays.stream(originalArray)
     
 System.out.println("result: " + Arrays.toString(result)); 
 // result: [1, 2, 3, 4, 5]
+```
+
+**Rust**
+```Rust
+let original_array = vec![vec![1, 2], vec![3, 4], vec![5]];
+let result: Vec<_> = original_array.iter().cloned().flatten().collect();
+
+println!("result: {:?}", result); // result: [1, 2, 3, 4, 5]
 ```

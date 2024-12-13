@@ -1,6 +1,10 @@
+# java
 *.class
 
-#intellij
+# intellij
 out/
 .idea
 *.iml
+
+# rust
+target/
