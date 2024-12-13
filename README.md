@@ -42,7 +42,7 @@ for (let i = 0; i < originalArray.length; i++) {
   newArray.push(originalArray[i] * 2);
 }
 
-// newArray: [2, 4, 6]
+console.log('newArray: ', newArray); // newArray: [2, 4, 6]
 ```
 
 **Java**
@@ -57,6 +57,7 @@ for (int i = 0; i < originalArray.length; i++) {
     newArray[i] = originalArray[i] * 2;
 }
 
+System.out.println("newArray: " + Arrays.toString(newArray));
 // newArray: [2, 4, 6]
 ```
 
@@ -76,7 +77,7 @@ for (const value of originalArray) {
   newArray.push(value * 2);
 }
 
-// newArray: [2, 4, 6]
+console.log('newArray: ', newArray); // newArray: [2, 4, 6]
 ```
 
 **Java**
@@ -90,7 +91,7 @@ for (int value : originalArray) {
     newArray.add(value * 2);
 }
 
-// newArray: [2, 4, 6]
+System.out.println("newArray: " + newArray); // newArray: [2, 4, 6]
 ```
 
 ## while
@@ -112,7 +113,7 @@ while (i < originalArray.length) {
   i++;
 }
 
-// newArray: [2, 4, 6]
+console.log('newArray: ', newArray); // newArray: [2, 4, 6]
 ```
 
 **Java**
@@ -128,7 +129,7 @@ while (i < originalArray.length) {
     i++;
 }
 
-// newArray: [2, 4, 6]
+System.out.println("newArray: " + newArray); // newArray: [2, 4, 6]
 ```
 
 ## do...while
@@ -150,7 +151,7 @@ do {
   i++;
 } while (i < originalArray.length);
 
-// newArray: [2, 4, 6]
+console.log('newArray: ', newArray); // newArray: [2, 4, 6]
 ```
 
 **Java**
@@ -165,6 +166,8 @@ do {
     newArray.add(originalArray[i] * 2);
     i++;
 } while (i < originalArray.length);
+
+System.out.println("newArray: " + newArray); // newArray: [2, 4, 6]
 ```
 
 ## forEach
@@ -184,7 +187,7 @@ originalArray.forEach((value) => {
   newArray.push(value * 2);
 });
 
-// newArray: [2, 4, 6, 8]
+console.log('newArray: ', newArray); // newArray: [2, 4, 6, 8]
 ```
 
 ## map
@@ -213,14 +216,19 @@ int[] originalArray = {1, 2, 3, 4};
 int[] newArray = Arrays.stream(originalArray)
     .map(value -> value * 2)
     .toArray();
+
+System.out.println("result (Array): " + Arrays.toString(newArray));
 // result (Array): [2, 4, 6, 8]
 ```
+
 ```Java
 int[] originalArray = {1, 2, 3, 4};
 List<Integer> newArray = Arrays.stream(originalArray)
     .map(value -> value * 2)
     .boxed()
     .collect(Collectors.toList());
+
+System.out.println("result (List): " + newArray);
 // result (List): [2, 4, 6, 8]
 ```
 
@@ -238,7 +246,7 @@ Examples below iterate over an array and return a new array with positive number
 const originalArray = [1, -2, 3, 4, -5];
 const result = originalArray.filter((value) => value > 0);
 
-// result: [1, 3, 4]
+console.log('result:', result); // result: [1, 3, 4]
 ```
 
 **Java**
@@ -250,6 +258,9 @@ int[] originalArray = {1, -2, 3, 4, -5};
 int[] result = Arrays.stream(originalArray)
     .filter(value -> value > 0)
     .toArray();
+
+System.out.println("result: " + Arrays.toString(result));
+// result: [1, 3, 4]
 ```
 
 ## every / all match
@@ -268,8 +279,7 @@ const originalArray = [2, 4, 6];
 const result1 = originalArray.every((value) => value % 2 === 0);
 const result2 = originalArray.every((value) => value > 100);
 
-// result1: true
-// result2: false
+console.log({ result1, result2 }); // { result1: true, result2: false }
 ```
 
 **Java**
@@ -283,8 +293,8 @@ boolean result1 = Arrays.stream(originalArray)
 boolean result2 = Arrays.stream(originalArray)
     .allMatch(value -> value > 100);
 
-// result1: true
-// result2: false
+System.out.println("result1: " + result1 + ", result2: " + result2);
+// result1: true, result2: false
 ```
 
 ## some / any match
@@ -303,8 +313,7 @@ const originalArray = [1, 3, 5, 6];
 const result1 = originalArray.some((value) => value % 2 === 0);
 const result2 = originalArray.some((value) => value > 100);
 
-// result1: true
-// result2: false
+console.log({ result1, result2 }); // { result1: true, result2: false }
 ```
 
 **Java**
@@ -318,8 +327,8 @@ boolean result1 = Arrays.stream(originalArray)
 boolean result2 = Arrays.stream(originalArray)
     .anyMatch(value -> value > 100);
 
-// result1: true
-// result2: false
+System.out.println("result1: " + result1 + ", result2: " + result2);
+// result1: true, result2: false
 ```
 
 # find
@@ -336,7 +345,7 @@ boolean result2 = Arrays.stream(originalArray)
 const originalArray = [-1, 3, 6, 7, 8];
 const result = originalArray.find((value) => value > 0 && value % 2 === 0);
 
-// result: 6
+console.log('result:', result); // result: 6
 ```
 
 **Java**
@@ -349,7 +358,7 @@ OptionalInt result = Arrays.stream(originalArray)
     .filter(value -> value > 0 && value % 2 == 0)
     .findFirst();
 
-// result: 6
+System.out.println("result: " + result.getAsInt()); // result: 6
 ```
 
 ## reduce
@@ -368,7 +377,7 @@ const originalArray = [1, 2, 3, 4];
 const result = originalArray.reduce(
     (accumulator, currentValue) => accumulator + currentValue, 0);
 
-// result: 10
+console.log('result:', result); // result: 10
 ```
 
 **Java**
@@ -380,7 +389,7 @@ int[] originalArray = {1, 2, 3, 4};
 int result = Arrays.stream(originalArray)
     .reduce(0, Integer::sum);
 
-// result: 10
+System.out.println("result: " + result); // result: 10
 ```
 
 ### Reduce Example 2: Find the maximum value in an array
@@ -393,7 +402,7 @@ const result = originalArray.reduce(
         -Infinity
     );
 
-// result: 9
+console.log('result:', result); // result: 9
 ```
 
 **Java**
@@ -402,7 +411,7 @@ int[] originalArray = {3, 7, 2, 9, 5};
 int result = Arrays.stream(originalArray)
     .reduce(Integer.MIN_VALUE, Integer::max);
 
-// result: 9
+System.out.println("result: " + result); // result: 9
 ```
 
 ### Reduce Example 3: Flatten a nested array
@@ -414,7 +423,7 @@ const result = originalArray.reduce(
         (flatArray, currentArray) => flatArray.concat(currentArray), []
     );
 
-// result: [1, 2, 3, 4, 5]
+console.log('result:', result); // result: [1, 2, 3, 4, 5]
 ```
 
 **Java**
@@ -424,5 +433,6 @@ int[] result = Arrays.stream(originalArray)
     .flatMapToInt(Arrays::stream)
     .toArray();
     
+System.out.println("result: " + Arrays.toString(result)); 
 // result: [1, 2, 3, 4, 5]
 ```
