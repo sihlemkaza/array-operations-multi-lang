@@ -1,3 +1,4 @@
+package examples.java;
 import java.util.*;
 import java.util.stream.*;
 
