@@ -18,13 +18,13 @@ Covering different techniques for iterating, transforming, and manipulating arra
 - [while](#while)
 - [do...while](#dowhile)
 - [Infinite Loop](#infite-loop)
-- [forEach](#dowhile)
+- [for each](#for-each)
 - [map](#map)
 - [filter](#filter)
 - [every | all match](#every--all-match)
 - [some | any match](#some--any-match)
 - [find](#find)
-- [reduce](#reduce)
+- [reduce | fold](#reduce--fold)
 
 
 ## for 
@@ -63,6 +63,9 @@ System.out.println("newArray: " + Arrays.toString(newArray));
 ```
 
 **Rust**
+
+[docs/rust-lang/for 🔗](https://doc.rust-lang.org/std/keyword.for.html)
+
 ```Rust
 let original_array = vec![1, 2, 3];
 let mut new_array = Vec::new();
@@ -107,6 +110,9 @@ System.out.println("newArray: " + newArray); // newArray: [2, 4, 6]
 ```
 
 **Rust**
+
+[docs/rust-lang/for 🔗](https://doc.rust-lang.org/std/keyword.for.html)
+
 ```Rust
 let original_array = vec![1, 2, 3];
 let mut new_array = Vec::new();
@@ -156,6 +162,9 @@ System.out.println("newArray: " + newArray); // newArray: [2, 4, 6]
 ```
 
 **Rust**
+
+[docs/rust-lang/while 🔗](https://doc.rust-lang.org/std/keyword.while.html)
+
 ```Rust
 let original_array = vec![1, 2, 3];
 let mut new_array = Vec::new();
@@ -215,6 +224,9 @@ that can be assigned to a variable e.g. `let result = loop { inner_logic... brea
 Examples below iterates over an array of numbers and returns a new array with each element doubled.
 
 **Rust**
+
+[docs/rust-lang/loop 🔗](https://doc.rust-lang.org/std/keyword.loop.html)
+
 ```Rust
 let original_array = vec![1, 2, 3];
 let mut new_array = Vec::new();
@@ -230,7 +242,7 @@ loop {
 println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
 ```
 
-## forEach
+## for each
 
 An array method that iterates over each element in a collection or array and applies a provided function or operation to each element. 
 
@@ -251,6 +263,9 @@ console.log('newArray: ', newArray); // new_array: [2, 4, 6, 8]
 ```
 
 **Rust**
+
+[docs/rust-lang/for_each 🔗](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.for_each)
+
 ```Rust
 let original_array = vec![1, 2, 3, 4];
 let mut new_array = Vec::new();
@@ -304,6 +319,9 @@ System.out.println("result (List): " + newArray);
 ```
 
 **Rust**
+
+[docs/rust-lang/map 🔗](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map)
+
 ```Rust
 let original_array = vec![1, 2, 3, 4];
 let new_array: Vec<_> = original_array.iter()
@@ -344,6 +362,9 @@ System.out.println("result: " + Arrays.toString(result));
 ```
 
 **Rust**
+
+[docs/rust-lang/filter 🔗](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.filter)
+
 ```Rust
 let original_array = vec![1, -2, 3, 4, -5];
 let result: Vec<_> = original_array.iter()
@@ -387,6 +408,9 @@ System.out.println("result1: " + result1 + ", result2: " + result2);
 ```
 
 **Rust**
+
+[docs/rust-lang/all 🔗](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.all)
+
 ```Rust
 let original_array = vec![2, 4, 6];
 let result1 = original_array.iter().all(|&value| value % 2 == 0);
@@ -431,6 +455,9 @@ System.out.println("result1: " + result1 + ", result2: " + result2);
 ```
 
 **Rust**
+
+[docs/rust-lang/any 🔗](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.any)
+
 ```Rust
 let original_array = vec![1, 3, 5, 6];
 let result1 = original_array.iter().any(|&value| value % 2 == 0);
@@ -471,6 +498,9 @@ System.out.println("result: " + result.getAsInt()); // result: 6
 ```
 
 **Rust**
+
+[docs/rust-lang/find 🔗](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.find)
+
 ```Rust
 let original_array = vec![-1, 3, 6, 7, 8];
 let result = original_array.iter()
@@ -479,9 +509,11 @@ let result = original_array.iter()
 println!("result: {:?}", result); // result: Some(6)
 ```
 
-## reduce
-
-Applies a function to each element of an array to reduce it to a single accumulated value.
+## reduce | fold
+Both the `reduce` and `fold` functions apply a function to each element of an array/collection and returns a single accumulated value.
+- `reduce` - an initial accumulator value is **optional**. First element from collection is used if not supplied.
+    - **in Rust**, no initial value is accepted, works on existing collection elements.
+- `fold` - *(Rust only)* initial accumulator value is **required**.
 
 
 ### Reduce Example 1: Sum all numbers in an array
@@ -511,9 +543,24 @@ System.out.println("result: " + result); // result: 10
 ```
 
 **Rust**
+
+[docs/rust-lang/reduce 🔗](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.reduce)
+
 ```Rust
 let original_array = vec![1, 2, 3, 4];
-let result: i32 = original_array.iter().sum();
+let result: i32 = original_array
+    .iter().cloned()
+    .reduce(|accumulator , current| accumulator  + current)
+    .unwrap_or(0);
+
+println!("result: {:?}", result); // result: 10
+```
+
+[docs/rust-lang/fold 🔗](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.fold)
+```Rust
+let original_array = vec![1, 2, 3, 4];
+let result: i32 = original_array.iter()
+    .fold(0, |accumulator, current| accumulator + current);
 
 println!("result: {:?}", result); // result: 10
 ```
@@ -541,6 +588,14 @@ System.out.println("result: " + result); // result: 9
 ```
 
 **Rust**
+
+```Rust
+let original_array = vec![3, 7, 2, 9, 5];
+let result = original_array.iter().cloned().reduce(i32::max).unwrap_or(i32::MIN);
+
+println!("result: {:?}", result); // result: 9
+```
+
 ```Rust
 let original_array = vec![3, 7, 2, 9, 5];
 let result = original_array.iter().cloned().fold(i32::MIN, i32::max);
@@ -574,7 +629,25 @@ System.out.println("result: " + Arrays.toString(result));
 **Rust**
 ```Rust
 let original_array = vec![vec![1, 2], vec![3, 4], vec![5]];
-let result: Vec<_> = original_array.iter().cloned().flatten().collect();
+let result: Vec<_> = original_array
+    .iter().cloned()
+    .reduce(|mut accumulator , current| {
+        accumulator.extend(current);
+        accumulator
+    })
+    .unwrap_or_else(Vec::new);
+
+println!("result: {:?}", result); // result: [1, 2, 3, 4, 5]
+```
+
+```Rust
+let original_array = vec![vec![1, 2], vec![3, 4], vec![5]];
+let result: Vec<_> = original_array
+    .iter().cloned()
+    .fold(Vec::new(),|mut accumulator , current| {
+        accumulator.extend(current);
+        accumulator
+    });
 
 println!("result: {:?}", result); // result: [1, 2, 3, 4, 5]
 ```

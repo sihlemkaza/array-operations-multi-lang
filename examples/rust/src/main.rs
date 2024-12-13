@@ -87,21 +87,62 @@ fn main() {
     // Reduce (Sum)
     {
         let original_array = vec![1, 2, 3, 4];
-        let result: i32 = original_array.iter().sum();
-        println!("sumArray: original_array: {:?}, result: {:?}", original_array, result);
+        let result: i32 = original_array
+            .iter().cloned()
+            .reduce(|accumulator , current| accumulator  + current)
+            .unwrap_or(0);
+
+        println!("reduce...sumArray: original_array: {:?}, result: {:?}", original_array, result);
     }
 
-    // Reduce (Max Value)
+    // Fold (Sum) Alternative
+    {
+        let original_array = vec![1, 2, 3, 4];
+        let result: i32 = original_array.iter()
+            .fold(0, |accumulator, current| accumulator + current);
+        println!("fold:...sumArray: original_array: {:?}, result: {:?}", original_array, result);
+    }
+
+    // Reduce (Max)
     {
         let original_array = vec![3, 7, 2, 9, 5];
-        let result = original_array.iter().cloned().fold(i32::MIN, i32::max);
-        println!("fold...maxVal: original_array: {:?}, result: {:?}", original_array, result);
+        let result = original_array.iter().cloned()
+            .reduce(i32::max).unwrap_or(i32::MIN);
+        println!("reduce...maxVal: original_array: {:?}, result: {:?}", original_array, result);
     }
 
-    // Reduce (Flatten Array)
+     // Fold (Max) Alternative
+     {
+        let original_array = vec![3, 7, 2, 9, 5];
+        let result = original_array.iter().cloned()
+            .fold(i32::MIN, i32::max);
+        println!("fold...maxVal: original_array: {:?}, result: {:?}", original_array, result);
+    }
+    
+    // Reduce (Flatten)
     {
         let original_array = vec![vec![1, 2], vec![3, 4], vec![5]];
-        let result: Vec<_> = original_array.iter().cloned().flatten().collect();
-        println!("flattenArray: original_array: {:?}, result: {:?}", original_array, result);
+        let result: Vec<_> = original_array
+            .iter().cloned()
+            .reduce(|mut accumulator , current| {
+                accumulator.extend(current);
+                accumulator
+            })
+            .unwrap_or_else(Vec::new);
+
+        println!("reduce...flattenArray: original_array: {:?}, result: {:?}", original_array, result);
+    }
+
+    // Fold (Flatten) Alternative
+    {
+        let original_array = vec![vec![1, 2], vec![3, 4], vec![5]];
+        let result: Vec<_> = original_array
+            .iter().cloned()
+            .fold(Vec::new(),|mut accumulator , current| {
+                accumulator.extend(current);
+                accumulator
+            });
+
+        println!("fold...flattenArray: original_array: {:?}, result: {:?}", original_array, result);
     }
 }
