@@ -56,11 +56,11 @@ cargo run
 ```
 
 # Constructs/Statements and Methods Covered
-- [for](#for)
+- [for range](#for-range)
 - [for...of | Enahanced for Loop | for...in](#forof--enahanced-for-loop--forin)
 - [while](#while)
 - [do...while](#dowhile)
-- [Infinite Loop](#infite-loop)
+- [Infinite Loop](#infinite-loop)
 - [for each](#for-each)
 - [map](#map)
 - [filter](#filter)
