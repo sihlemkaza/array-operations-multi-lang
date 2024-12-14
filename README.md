@@ -1,8 +1,6 @@
 # Array Operations
 
-Demonstrating a variety of array-related operations that can be performed across multiple programming languages. 
-
-Covering different techniques for iterating, transforming, and manipulating arrays.
+Demonstrating a variety of array-related operations for iterating, transforming, and manipulating arrays.
 
 ---
 
@@ -11,6 +9,51 @@ Covering different techniques for iterating, transforming, and manipulating arra
 - JavaScript
 - Python
 - Rust
+
+## Project Examples
+This repository provides examples of array operations implemented in various programming languages. The supported languages include 
+Java, JavaScript, Python, and Rust. Follow the instructions below to run the code for each language.
+
+### Prerequisites
+To run the code examples, ensure that the required tools for each language are installed on your system:
+ - **Java**: JDK 8 or higher
+ - **JavaScript**: Node.js (v14 or higher recommended)
+ - **Python**: Python 3.7 or higher
+ - **Rust**: Rust 1.53 or higher
+
+### Java
+Steps 1 can be skipped on Java 11 or higher.
+1. From the root directory, compile the `ArrayOperations.java` file
+```bash
+javac /examples/java/ArrayOperations.java
+```
+2. Run the compiled program:
+```bash
+java /examples/java/ArrayOperations.java
+```
+
+### JavaScript
+From the root directory, run the `array-operations.js` file using Node.js:
+ ```bash
+node examples/javascript/array-operations.js
+ ```
+
+### Python
+From the root directory, run the `array_operations.py` file:
+```bash
+python examples/python/array_operations.py
+```
+
+### Rust
+1. Navigate to the `examples/rust` directory
+```bash
+cd examples/rust
+```
+
+2. Build and run the Rust examples using Cargo
+```bash
+cargo run
+```
 
 # Constructs/Statements and Methods Covered
 - [for](#for)
