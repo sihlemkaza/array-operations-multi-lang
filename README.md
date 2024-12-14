@@ -76,6 +76,9 @@ println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
 ```
 
 **Python**
+
+[docs/python/for 🔗](https://docs.python.org/3/tutorial/controlflow.html#for-statements)
+
 ```Python
 original_array = [1, 2, 3]
 new_array = []
@@ -133,6 +136,9 @@ println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
 ```
 
 **Python**
+
+[docs/python/for 🔗](https://docs.python.org/3/tutorial/controlflow.html#for-statements)
+
 ```Python
 original_array = [1, 2, 3]
 new_array = []
@@ -197,6 +203,9 @@ println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
 ```
 
 **Python**
+
+[docs/python-wiki/while 🔗](https://wiki.python.org/moin/WhileLoop)
+
 ```Python
 original_array = [1, 2, 3]
 new_array = []
@@ -361,6 +370,9 @@ let new_array: Vec<_> = original_array.iter()
 println!("new_array: {:?}", new_array); // new_array: [2, 4, 6, 8]
 ```
 **Python**
+
+[docs/python/map 🔗](https://docs.python.org/3/library/functions.html#map)
+
 ```Python
 original_array = [1, 2, 3, 4]
 new_array = list(map(lambda value: value * 2, original_array))
@@ -380,9 +392,9 @@ Examples below iterate over an array and return a new array with positive number
 
 ```JavaScript
 const originalArray = [1, -2, 3, 4, -5];
-const result = originalArray.filter((value) => value > 0);
+const newArray = originalArray.filter((value) => value > 0);
 
-console.log('result:', result); // result: [1, 3, 4]
+console.log('newArray: ', newArray); // newArray: [1, 3, 4]
 ```
 
 **Java**
@@ -391,12 +403,12 @@ console.log('result:', result); // result: [1, 3, 4]
 
 ```Java
 int[] originalArray = {1, -2, 3, 4, -5};
-int[] result = Arrays.stream(originalArray)
+int[] newArray = Arrays.stream(originalArray)
     .filter(value -> value > 0)
     .toArray();
 
-System.out.println("result: " + Arrays.toString(result));
-// result: [1, 3, 4]
+System.out.println("newArray: " + Arrays.toString(newArray));
+// newArray: [1, 3, 4]
 ```
 
 **Rust**
@@ -405,13 +417,16 @@ System.out.println("result: " + Arrays.toString(result));
 
 ```Rust
 let original_array = vec![1, -2, 3, 4, -5];
-let result: Vec<_> = original_array.iter()
+let new_array: Vec<_> = original_array.iter()
     .filter(|&&value| value > 0).cloned().collect();
 
-println!("result: {:?}", result); // new_array: [1, 3, 4]
+println!("new_array: {:?}", new_array); // new_array: [1, 3, 4]
 ```
 
 **Python**
+
+[docs/python/filter 🔗](https://docs.python.org/3/library/functions.html#filter)
+
 ```Python
 original_array = [1, -2, 3, 4, -5]
 new_array = list(filter(lambda value: value > 0, original_array))
@@ -467,6 +482,9 @@ println!("result1: {:?}, result2: {:?}", result1, result2);
 ```
 
 **Python**
+
+[docs/python/all 🔗](https://docs.python.org/3/library/functions.html#all)
+
 ```Python
 original_array = [2, 4, 6]
 result1 = all(value % 2 == 0 for value in original_array)
@@ -523,6 +541,9 @@ println!("result1: {:?}, result2: {:?}", result1, result2);
 ```
 
 **Python**
+
+[docs/python/any 🔗](https://docs.python.org/3/library/functions.html#any)
+
 ```Python
 original_array = [1, 3, 5, 6]
 result1 = any(value % 2 == 0 for value in original_array)
@@ -573,6 +594,9 @@ let result = original_array.iter()
 println!("result: {:?}", result); // result: Some(6)
 ```
 **Python**
+
+[docs/python/next 🔗](https://docs.python.org/3/library/functions.html#next)
+
 ```Python
  original_array = [-1, 3, 6, 7, 8]
 result = next(
@@ -640,6 +664,9 @@ println!("result: {:?}", result); // result: 10
 ```
 
 **Python**
+
+[docs/python/reduce 🔗](https://docs.python.org/3/library/functools.html#functools.reduce)
+
 ```Python
 original_array = [1, 2, 3, 4]
 result = reduce(
@@ -706,28 +733,29 @@ print(f"{result=}") # result=9
 **JavaScript**
 ```JavaScript
 const originalArray = [[1, 2], [3, 4], [5]];
-const result = originalArray.reduce(
-        (flatArray, currentArray) => flatArray.concat(currentArray), []
+const newArray = originalArray.reduce(
+        (flatArray, currentArray) => flatArray.concat(currentArray), 
+        []
     );
 
-console.log('result:', result); // result: [1, 2, 3, 4, 5]
+console.log('newArray:', newArray); // newArray: [1, 2, 3, 4, 5]
 ```
 
 **Java**
 ```Java
 int[][] originalArray = {{1, 2}, {3, 4}, {5}};
-int[] result = Arrays.stream(originalArray)
+int[] newArray = Arrays.stream(originalArray)
     .flatMapToInt(Arrays::stream)
     .toArray();
     
-System.out.println("result: " + Arrays.toString(result)); 
-// result: [1, 2, 3, 4, 5]
+System.out.println("newArray: " + Arrays.toString(newArray)); 
+// newArray: [1, 2, 3, 4, 5]
 ```
 
 **Rust**
 ```Rust
 let original_array = vec![vec![1, 2], vec![3, 4], vec![5]];
-let result: Vec<_> = original_array
+let new_array: Vec<_> = original_array
     .iter().cloned()
     .reduce(|mut accumulator , current| {
         accumulator.extend(current);
@@ -735,29 +763,29 @@ let result: Vec<_> = original_array
     })
     .unwrap_or_else(Vec::new);
 
-println!("result: {:?}", result); // result: [1, 2, 3, 4, 5]
+println!("new_array: {:?}", new_array); // new_array: [1, 2, 3, 4, 5]
 ```
 
 ```Rust
 let original_array = vec![vec![1, 2], vec![3, 4], vec![5]];
-let result: Vec<_> = original_array
+let new_array: Vec<_> = original_array
     .iter().cloned()
     .fold(Vec::new(),|mut accumulator , current| {
         accumulator.extend(current);
         accumulator
     });
 
-println!("result: {:?}", result); // result: [1, 2, 3, 4, 5]
+println!("new_array: {:?}", new_array); // new_array: [1, 2, 3, 4, 5]
 ```
 
 **Python**
 ```Python
 original_array = [[1, 2], [3, 4], [5]]
-result = reduce(
+new_array = reduce(
     lambda flat, current: flat + current, 
     original_array, 
     []
 )
 
-print(f"{result=}") # result=[1, 2, 3, 4, 5]
+print(f"{new_array=}") # new_array=[1, 2, 3, 4, 5]
 ```
