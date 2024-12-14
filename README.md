@@ -26,8 +26,7 @@ Covering different techniques for iterating, transforming, and manipulating arra
 - [find](#find)
 - [reduce | fold](#reduce--fold)
 
-
-## for 
+## for range
 A looping construct that iterates over a range, sequence, or iterable. It allows performing operations on each element in the sequence.
 
 Examples below iterates over an array of numbers and returns a new array with each element doubled.
@@ -76,6 +75,16 @@ for i in 0..original_array.len() {
 println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
 ```
 
+**Python**
+```Python
+original_array = [1, 2, 3]
+new_array = []
+for i in range(len(original_array)):
+    new_array.append(original_array[i] * 2)
+
+print(f"{new_array=}") # new_array=[2, 4, 6]
+```
+
 
 ## for...of | Enahanced for Loop | for...in
 A construct used to iterate over iterable objects like arrays, strings, or collections.
@@ -121,6 +130,16 @@ for &value in &original_array {
 }
 
 println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
+```
+
+**Python**
+```Python
+original_array = [1, 2, 3]
+new_array = []
+for value in original_array:
+    new_array.append(value * 2)
+
+print(f"{new_array=}") # new_array=[2, 4, 6]
 ```
 
 ## while
@@ -175,6 +194,18 @@ while i < original_array.len() {
 }
 
 println!("new_array: {:?}", new_array); // new_array: [2, 4, 6]
+```
+
+**Python**
+```Python
+original_array = [1, 2, 3]
+new_array = []
+i = 0
+while i < len(original_array):
+    new_array.append(original_array[i] * 2)
+    i += 1
+
+print(f"{new_array=}") # new_array=[2, 4, 6]
 ```
 
 ## do...while
@@ -329,6 +360,13 @@ let new_array: Vec<_> = original_array.iter()
 
 println!("new_array: {:?}", new_array); // new_array: [2, 4, 6, 8]
 ```
+**Python**
+```Python
+original_array = [1, 2, 3, 4]
+new_array = list(map(lambda value: value * 2, original_array))
+
+print(f"{new_array=}") # new_array=[2, 4, 6, 8]
+```
 
 ## filter
 
@@ -371,6 +409,14 @@ let result: Vec<_> = original_array.iter()
     .filter(|&&value| value > 0).cloned().collect();
 
 println!("result: {:?}", result); // new_array: [1, 3, 4]
+```
+
+**Python**
+```Python
+original_array = [1, -2, 3, 4, -5]
+new_array = list(filter(lambda value: value > 0, original_array))
+
+print(f"{new_array=}") # new_array=[1, 3, 4]
 ```
 
 ## every | all match
@@ -420,6 +466,15 @@ println!("result1: {:?}, result2: {:?}", result1, result2);
 // result1: true, result2: false
 ```
 
+**Python**
+```Python
+original_array = [2, 4, 6]
+result1 = all(value % 2 == 0 for value in original_array)
+result2 = all(value > 100 for value in original_array)
+
+print(f"{result1=}, {result2=}") # result=True, result2=False
+```
+
 ## some | any match
 
 Checks if at least one element in an array satisfies a given condition, returning a boolean value.
@@ -467,6 +522,15 @@ println!("result1: {:?}, result2: {:?}", result1, result2);
 // result1: true, result2: false
 ```
 
+**Python**
+```Python
+original_array = [1, 3, 5, 6]
+result1 = any(value % 2 == 0 for value in original_array)
+result2 = any(value > 100 for value in original_array)
+
+print(f"{result1=}, {result2=}") # result=True, result2=False
+```
+
 # find
 
  Returns the first element in an array that satisfies a specified condition. If no element satisfies the condition, it returns a default or `null`/`undefined` equivalent.
@@ -507,6 +571,16 @@ let result = original_array.iter()
     .find(|&&value| value > 0 && value % 2 == 0);
 
 println!("result: {:?}", result); // result: Some(6)
+```
+**Python**
+```Python
+ original_array = [-1, 3, 6, 7, 8]
+result = next(
+    (value for value in original_array if value > 0 and value % 2 == 0), 
+    None
+)
+
+print(f"{result=}") # result=6
 ```
 
 ## reduce | fold
@@ -565,6 +639,18 @@ let result: i32 = original_array.iter()
 println!("result: {:?}", result); // result: 10
 ```
 
+**Python**
+```Python
+original_array = [1, 2, 3, 4]
+result = reduce(
+    lambda acc, current: acc + current, 
+    original_array, 
+    0
+)
+
+print(f"{result=}") # result=10
+```
+
 ### Reduce Example 2: Find the maximum value in an array
 
 **JavaScript**
@@ -601,6 +687,18 @@ let original_array = vec![3, 7, 2, 9, 5];
 let result = original_array.iter().cloned().fold(i32::MIN, i32::max);
 
 println!("result: {:?}", result); // result: 9
+```
+
+**Python**
+```Python
+original_array = [3, 7, 2, 9, 5]
+result = reduce(
+    lambda max_val, current: current if current > max_val else max_val, 
+    original_array, 
+    -float('inf')
+)
+
+print(f"{result=}") # result=9
 ```
 
 ### Reduce Example 3: Flatten a nested array
@@ -650,4 +748,16 @@ let result: Vec<_> = original_array
     });
 
 println!("result: {:?}", result); // result: [1, 2, 3, 4, 5]
+```
+
+**Python**
+```Python
+original_array = [[1, 2], [3, 4], [5]]
+result = reduce(
+    lambda flat, current: flat + current, 
+    original_array, 
+    []
+)
+
+print(f"{result=}") # result=[1, 2, 3, 4, 5]
 ```
